@@ -30,14 +30,15 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Multiplicator = new System.Windows.Forms.TabPage();
-            this.Determinant = new System.Windows.Forms.TabPage();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            Form1.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Determinant = new System.Windows.Forms.TabPage();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
             this.Multiplicator.SuspendLayout();
             this.SuspendLayout();
@@ -46,6 +47,8 @@
             // 
             this.tabControl1.Controls.Add(this.Multiplicator);
             this.tabControl1.Controls.Add(this.Determinant);
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -54,7 +57,6 @@
             // 
             // Multiplicator
             // 
-            this.Multiplicator.Controls.Add(Form1.richTextBox1);
             this.Multiplicator.Controls.Add(this.button1);
             this.Multiplicator.Controls.Add(this.textBox3);
             this.Multiplicator.Controls.Add(this.label2);
@@ -69,29 +71,31 @@
             this.Multiplicator.Text = "Multiplicator";
             this.Multiplicator.UseVisualStyleBackColor = true;
             // 
-            // Determinant
+            // button1
             // 
-            this.Determinant.Location = new System.Drawing.Point(4, 25);
-            this.Determinant.Name = "Determinant";
-            this.Determinant.Padding = new System.Windows.Forms.Padding(3);
-            this.Determinant.Size = new System.Drawing.Size(768, 397);
-            this.Determinant.TabIndex = 1;
-            this.Determinant.Text = "Determinant";
-            this.Determinant.UseVisualStyleBackColor = true;
+            this.button1.Location = new System.Drawing.Point(18, 66);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "START";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox1
+            // textBox3
             // 
-            this.textBox1.Location = new System.Drawing.Point(18, 28);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 22);
-            this.textBox1.TabIndex = 0;
+            this.textBox3.Location = new System.Drawing.Point(274, 27);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(100, 22);
+            this.textBox3.TabIndex = 4;
             // 
-            // textBox2
+            // label2
             // 
-            this.textBox2.Location = new System.Drawing.Point(145, 27);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 22);
-            this.textBox2.TabIndex = 1;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(252, 32);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(16, 17);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "=";
             // 
             // label1
             // 
@@ -103,40 +107,47 @@
             this.label1.Text = "x";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // label2
+            // textBox2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(252, 32);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(16, 17);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "=";
+            this.textBox2.Location = new System.Drawing.Point(145, 27);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 22);
+            this.textBox2.TabIndex = 1;
             // 
-            // textBox3
+            // textBox1
             // 
-            this.textBox3.Location = new System.Drawing.Point(274, 27);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 22);
-            this.textBox3.TabIndex = 4;
+            this.textBox1.Location = new System.Drawing.Point(18, 28);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 22);
+            this.textBox1.TabIndex = 0;
             // 
-            // button1
+            // Determinant
             // 
-            this.button1.Location = new System.Drawing.Point(18, 66);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "START";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.Determinant.Location = new System.Drawing.Point(4, 25);
+            this.Determinant.Name = "Determinant";
+            this.Determinant.Padding = new System.Windows.Forms.Padding(3);
+            this.Determinant.Size = new System.Drawing.Size(768, 397);
+            this.Determinant.TabIndex = 1;
+            this.Determinant.Text = "Determinant";
+            this.Determinant.UseVisualStyleBackColor = true;
             // 
-            // richTextBox1
+            // tabPage1
             // 
-            Form1.richTextBox1.Location = new System.Drawing.Point(18, 108);
-            Form1.richTextBox1.Name = "richTextBox1";
-            Form1.richTextBox1.Size = new System.Drawing.Size(744, 283);
-            Form1.richTextBox1.TabIndex = 6;
-            Form1.richTextBox1.Text = "";
-            Form1.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Size = new System.Drawing.Size(768, 397);
+            this.tabPage1.TabIndex = 2;
+            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Size = new System.Drawing.Size(768, 397);
+            this.tabPage2.TabIndex = 3;
+            this.tabPage2.Text = "MultMatr";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -165,6 +176,8 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label2;
         static public System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
     }
 }
 
