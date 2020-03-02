@@ -1,0 +1,10 @@
+C:\Users\Георгий\source\repos\KR1PER\KR1PER\bin\Debug\KR1PER.exe.config
+C:\Users\Георгий\source\repos\KR1PER\KR1PER\bin\Debug\KR1PER.exe
+C:\Users\Георгий\source\repos\KR1PER\KR1PER\bin\Debug\KR1PER.pdb
+C:\Users\Георгий\source\repos\KR1PER\KR1PER\obj\Debug\KR1PER.csprojAssemblyReference.cache
+C:\Users\Георгий\source\repos\KR1PER\KR1PER\obj\Debug\KR1PER.Form1.resources
+C:\Users\Георгий\source\repos\KR1PER\KR1PER\obj\Debug\KR1PER.Properties.Resources.resources
+C:\Users\Георгий\source\repos\KR1PER\KR1PER\obj\Debug\KR1PER.csproj.GenerateResource.cache
+C:\Users\Георгий\source\repos\KR1PER\KR1PER\obj\Debug\KR1PER.csproj.CoreCompileInputs.cache
+C:\Users\Георгий\source\repos\KR1PER\KR1PER\obj\Debug\KR1PER.exe
+C:\Users\Георгий\source\repos\KR1PER\KR1PER\obj\Debug\KR1PER.pdb
