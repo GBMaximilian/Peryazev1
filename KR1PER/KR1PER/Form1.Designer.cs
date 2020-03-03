@@ -39,6 +39,7 @@
             this.Determinant = new System.Windows.Forms.TabPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.tabControl1.SuspendLayout();
             this.Multiplicator.SuspendLayout();
             this.SuspendLayout();
@@ -57,6 +58,7 @@
             // 
             // Multiplicator
             // 
+            this.Multiplicator.Controls.Add(richTextBox2);
             this.Multiplicator.Controls.Add(this.button1);
             this.Multiplicator.Controls.Add(this.textBox3);
             this.Multiplicator.Controls.Add(this.label2);
@@ -149,6 +151,14 @@
             this.tabPage2.Text = "MultMatr";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // richTextBox2
+            // 
+            richTextBox2.Location = new System.Drawing.Point(6, 95);
+            richTextBox2.Name = "richTextBox2";
+            richTextBox2.Size = new System.Drawing.Size(756, 296);
+            richTextBox2.TabIndex = 6;
+            richTextBox2.Text = "";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -178,6 +188,7 @@
         static public System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
+        static public System.Windows.Forms.RichTextBox richTextBox2;
     }
 }
 

@@ -15,6 +15,8 @@ namespace KR1PER
         public int[] A2;
         public int[] A1_D;
         public int[] A2_D;
+        public int[] A_K;
+        public int[] B_K;
         public int[] AINV;
 
         int n;
@@ -29,23 +31,26 @@ namespace KR1PER
             A1 = new int[CountOfNumber(M1) + CountOfNumber(M2) - 1];
             A2 = new int[CountOfNumber(M1) + CountOfNumber(M2) - 1];
 
+
             A1_D = new int[Math.Max(CountOfNumber(M1), CountOfNumber(M2))];
             A2_D = new int[Math.Max(CountOfNumber(M1), CountOfNumber(M2))];
+
+            
 
             A1 = Con(M1, (CountOfNumber(M1) + CountOfNumber(M2) - 1));
             A2 = Con(M2, (CountOfNumber(M1) + CountOfNumber(M2) - 1));
             AINV = Con_Inv(M2, (CountOfNumber(M1) + CountOfNumber(M2) - 1));
 
-            A1_D = Con(M1, Math.Max(CountOfNumber(M1), CountOfNumber(M2)));
-            A2_D = Con(M2, Math.Max(CountOfNumber(M1), CountOfNumber(M2)));
+            A1_D = Con_en(M1, Math.Max(CountOfNumber(M1), CountOfNumber(M2)));
+            A2_D = Con_en(M2, Math.Max(CountOfNumber(M1), CountOfNumber(M2)));
         }
 
         public int MMU() // метод методического умножения
         {
             int[] res;
-            Form1.richTextBox1.Text += '\n';
-            Form1.richTextBox1.Text += "Метод Методического умножения";
-            Form1.richTextBox1.Text += '\n';
+            Form1.richTextBox2.Text += '\n';
+            Form1.richTextBox2.Text += "Метод Методического умножения";
+            Form1.richTextBox2.Text += '\n';
 
             int k = CountOfNumber(M1) + CountOfNumber(M2) - 1;
             int k1 = k- CountOfNumber(M1);
@@ -91,13 +96,13 @@ namespace KR1PER
                 }
 
 
-                Form1.richTextBox1.Text += '\n';
+                Form1.richTextBox2.Text += '\n';
                 VIV1(A1);
                 VIV1(AINV);
-                Form1.richTextBox1.Text += "-------";
-                Form1.richTextBox1.Text += '\n';
+                Form1.richTextBox2.Text += "-------";
+                Form1.richTextBox2.Text += '\n';
                 VIV1(res);
-                Form1.richTextBox1.Text += '\n';
+                Form1.richTextBox2.Text += '\n';
 
 
                 if (k1 > 0)
@@ -122,9 +127,9 @@ namespace KR1PER
                 
             }
 
-            Form1.richTextBox1.Text += "Ответ: ";
-            Form1.richTextBox1.Text += '\n';
-            Form1.richTextBox1.Text += Conv_To_Number(res);
+            Form1.richTextBox2.Text += "Ответ: ";
+            Form1.richTextBox2.Text += '\n';
+            Form1.richTextBox2.Text += Conv_To_Number(res);
             return 0;
         }
 
@@ -140,12 +145,12 @@ namespace KR1PER
             {
                 res[i] = 0;
             }
-            Form1.richTextBox1.Text += '\n';
-            Form1.richTextBox1.Text += "Метод Сокращенного умножения";
-            Form1.richTextBox1.Text += '\n';
+            Form1.richTextBox2.Text += '\n';
+            Form1.richTextBox2.Text += "Метод Сокращенного умножения";
+            Form1.richTextBox2.Text += '\n';
             VIV1(A1_D);
             VIV1(A2_D);
-            Form1.richTextBox1.Text += "-------";
+            Form1.richTextBox2.Text += "-------";
             for (int i = A1_D.Length - 1; i >= 0; i--) // по количеству итераций, разных перекрестий
             {
                 for (int j = i; j >= 0; j--) // по количеству итераций сдвига перекрестия
@@ -159,10 +164,10 @@ namespace KR1PER
 
         public int MRU() // метод русского уиножения
         {
-            Form1.richTextBox1.Text += '\n';
-            Form1.richTextBox1.Text += '\n';
-            Form1.richTextBox1.Text += "Метод Русского умножения";
-            Form1.richTextBox1.Text += '\n';
+            Form1.richTextBox2.Text += '\n';
+            Form1.richTextBox2.Text += '\n';
+            Form1.richTextBox2.Text += "Метод Русского умножения";
+            Form1.richTextBox2.Text += '\n';
             int M1_D = M1;
             int M2_D = M2;
             int Result = 0;
@@ -171,34 +176,116 @@ namespace KR1PER
             {
                 if (M1_D % 2 != 0)
                 {
-                    Form1.richTextBox1.Text += '\n';
-                    Form1.richTextBox1.Text += M1_D;
-                    Form1.richTextBox1.Text += "  ";
-                    Form1.richTextBox1.Text += M2_D;
-                    Form1.richTextBox1.Text += "**";
+                    Form1.richTextBox2.Text += '\n';
+                    Form1.richTextBox2.Text += M1_D;
+                    Form1.richTextBox2.Text += "  ";
+                    Form1.richTextBox2.Text += M2_D;
+                    Form1.richTextBox2.Text += "**";
                     Result += M2_D;
                 }
                 else
                 {
-                    Form1.richTextBox1.Text += '\n';
-                    Form1.richTextBox1.Text += M1_D;
-                    Form1.richTextBox1.Text += "  ";
-                    Form1.richTextBox1.Text += M2_D;
+                    Form1.richTextBox2.Text += '\n';
+                    Form1.richTextBox2.Text += M1_D;
+                    Form1.richTextBox2.Text += "  ";
+                    Form1.richTextBox2.Text += M2_D;
                 }
                 M1_D = M1_D / 2;
                 M2_D = M2_D * 2;                
             }
-            Form1.richTextBox1.Text += '\n';
-            Form1.richTextBox1.Text += "Складываем все значения с обозначением **, получаем ответ: ";
-            Form1.richTextBox1.Text += Result;
-            Form1.richTextBox1.Text += '\n';
+            Form1.richTextBox2.Text += '\n';
+            Form1.richTextBox2.Text += "Складываем все значения с обозначением **, получаем ответ: ";
+            Form1.richTextBox2.Text += Result;
+            Form1.richTextBox2.Text += '\n';
 
             return 0;
         }
 
-        public int MSU() //Метод сокращенного умножения
+        public int MKB() //Метод Карацубы
         {
+            int[] a1;
+            int[] a2;
+            int[] b1;
+            int[] b2;
+            int n, n2;
+            long RX;
+            
+            
+            n = Math.Max(CountOfNumber(M1), CountOfNumber(M2));
+            n2 = Division_(n, 2);
+            if (n % 2 != 0) n++;
 
+            A_K = new int[n];
+            B_K = new int[n];
+            A_K = Con_en(M1, n);
+            B_K = Con_en(M2, n);
+
+            a1 = new int[/*n-*/n2];
+            b1 = new int[/*n-*/n2];
+            a2 = new int[n2];
+            b2 = new int[n2];
+
+            for (int i = 0; i < A_K.Length; i++)
+            {                
+                if (i < n - n2)     a1[i] = A_K[i];
+                else                a2[i-n2] = A_K[i];                    
+            }
+            for (int i = 0; i < B_K.Length; i++)
+            {
+                if (i < n - n2)     b1[i] = B_K[i];
+                else                b2[i-n2] = B_K[i];
+            }
+            Form1.richTextBox2.Text += '\n';
+            Form1.richTextBox2.Text += "Метод Карацубы";
+            Form1.richTextBox2.Text += '\n';
+            Form1.richTextBox2.Text += "n="+n;
+            Form1.richTextBox2.Text += '\n';
+            Form1.richTextBox2.Text += "n/2" + n2;
+            Form1.richTextBox2.Text += '\n';
+            Form1.richTextBox2.Text += Conv_To_Number(a1) + "*" + Conv_To_Number(b1) + "*" + 10 + "^" + n + "+ ((" + Conv_To_Number(a1) + " + " + Conv_To_Number(a2) + ")" + "*(" + Conv_To_Number(b1) + " + " + Conv_To_Number(b2) + ")" + " - " + Conv_To_Number(a1) + "*" + Conv_To_Number(b1) + " - " + Conv_To_Number(a2) + "*" + Conv_To_Number(b2) + ")" + "*" + 10 + "^" + n / 2 + " + " + Conv_To_Number(a2) + "*" + Conv_To_Number(b2);
+            RX = (Conv_To_Number(a1) * Conv_To_Number(b1) * (int)Math.Pow(10, n)) + ((Conv_To_Number(a1) + Conv_To_Number(a2)) * (Conv_To_Number(b1) + Conv_To_Number(b2)) - Conv_To_Number(a1) * Conv_To_Number(b1) - Conv_To_Number(a2) * Conv_To_Number(b2)) * (int)Math.Pow(10, n2) + Conv_To_Number(a2) * Conv_To_Number(b2);
+
+
+
+            Form1.richTextBox2.Text += '\n';
+            Form1.richTextBox2.Text += RX;
+            Form1.richTextBox2.Text += '\n';
+
+            /*         
+                    
+           Form1.richTextBox2.Text += string.Join(" ", a1);
+           Form1.richTextBox2.Text += '\n';           
+           Form1.richTextBox2.Text += string.Join(" ", a2);
+           Form1.richTextBox2.Text += '\n';
+           Form1.richTextBox2.Text += string.Join(" ", b1);
+           Form1.richTextBox2.Text += '\n';
+           Form1.richTextBox2.Text += string.Join(" ", b2);
+           Form1.richTextBox2.Text += '\n';
+
+            */
+            VIV1(A_K);
+            VIV1(B_K);
+
+            VIV1(a1);
+            VIV1(a2);
+            VIV1(b1);
+            VIV1(b2);
+            
+
+
+
+
+
+
+            return 0;
+        }
+
+        public int Division_ (int a, int b)
+        {
+            int R2;
+            R2 = a / b;
+            if (a % b != 0) R2 = R2 + 1;
+            return R2;
         }
 
             public int[] Con(int x, int AL) // преобразует число в массив
@@ -211,6 +298,20 @@ namespace KR1PER
                 mas[n] = x % 10;
                 x = x / 10;
                 if(x > 0) n--;
+            }
+            return mas;
+        }
+
+        public int[] Con_en(int x, int AL) // преобразует число в массив
+        {            
+            int[] mas = new int[AL];
+            n = mas.Length - 1;
+
+            while (x > 0)
+            {
+                mas[n] = x % 10;
+                x = x / 10;
+                if (x > 0) n--;
             }
             return mas;
         }
@@ -243,9 +344,15 @@ namespace KR1PER
         {
             for (int i = 0; i < Arr.Length; i++)
             {
-                Form1.richTextBox1.Text += Arr[i];
+                Form1.richTextBox2.Text += Arr[i];
             }
-            Form1.richTextBox1.Text += '\n';
+            Form1.richTextBox2.Text += '\n';
+        }
+
+        public void VIV2(int[] Arr) //выводит поэлементно массив Arr в поле richTextBox1
+        {           
+            Form1.richTextBox2.Text += string.Join(" ", Arr);
+            Form1.richTextBox2.Text += '\n';
         }
 
         public int Conv_To_Number(int[] Arr) //преобразует массив Arr в число

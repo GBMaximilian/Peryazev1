@@ -45,9 +45,14 @@ namespace KR1PER
             richTextBox1.Text += Z1.CountOfNumber(Z1.M2);
             richTextBox1.Text += " ";
             */
+
+            ///*****
             
             Z1.MMU();
             Z1.MRU();
+            
+            ///******
+            Z1.MKB();
             /*
             richTextBox1.Text += '\n';
             richTextBox1.Text += Z1.res_prom1;
@@ -58,11 +63,11 @@ namespace KR1PER
         {
             for(int i=0; i<Arr.Length; i++)
             {
-                richTextBox1.Text += Arr[i];
-                richTextBox1.Text += " ";
+                richTextBox2.Text += Arr[i];
+                richTextBox2.Text += " ";
                 
             }
-            richTextBox1.Text += '\n';
+            richTextBox2.Text += '\n';
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
