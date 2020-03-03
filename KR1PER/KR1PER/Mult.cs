@@ -196,7 +196,12 @@ namespace KR1PER
             return 0;
         }
 
-        public int[] Con(int x, int AL) // преобразует число в массив
+        public int MSU() //Метод сокращенного умножения
+        {
+
+        }
+
+            public int[] Con(int x, int AL) // преобразует число в массив
         {
             n = CountOfNumber(x) - 1;
             int[] mas = new int[AL];
