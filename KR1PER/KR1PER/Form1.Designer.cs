@@ -30,6 +30,7 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Multiplicator = new System.Windows.Forms.TabPage();
+            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -39,13 +40,24 @@
             this.Determinant = new System.Windows.Forms.TabPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox3 = new System.Windows.Forms.RichTextBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.button4 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.Multiplicator.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.Multiplicator);
             this.tabControl1.Controls.Add(this.Determinant);
             this.tabControl1.Controls.Add(this.tabPage1);
@@ -58,7 +70,7 @@
             // 
             // Multiplicator
             // 
-            this.Multiplicator.Controls.Add(richTextBox2);
+            this.Multiplicator.Controls.Add(this.richTextBox2);
             this.Multiplicator.Controls.Add(this.button1);
             this.Multiplicator.Controls.Add(this.textBox3);
             this.Multiplicator.Controls.Add(this.label2);
@@ -72,6 +84,17 @@
             this.Multiplicator.TabIndex = 0;
             this.Multiplicator.Text = "Multiplicator";
             this.Multiplicator.UseVisualStyleBackColor = true;
+            // 
+            // richTextBox2
+            // 
+            this.richTextBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.richTextBox2.Location = new System.Drawing.Point(16, 95);
+            this.richTextBox2.Name = "richTextBox2";
+            this.richTextBox2.Size = new System.Drawing.Size(756, 296);
+            this.richTextBox2.TabIndex = 6;
+            this.richTextBox2.Text = "";
             // 
             // button1
             // 
@@ -144,6 +167,12 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.button4);
+            this.tabPage2.Controls.Add(this.richTextBox3);
+            this.tabPage2.Controls.Add(this.button3);
+            this.tabPage2.Controls.Add(this.button2);
+            this.tabPage2.Controls.Add(this.dataGridView2);
+            this.tabPage2.Controls.Add(this.dataGridView1);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Size = new System.Drawing.Size(768, 397);
@@ -151,13 +180,69 @@
             this.tabPage2.Text = "MultMatr";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // richTextBox2
+            // richTextBox3
             // 
-            richTextBox2.Location = new System.Drawing.Point(6, 95);
-            richTextBox2.Name = "richTextBox2";
-            richTextBox2.Size = new System.Drawing.Size(756, 296);
-            richTextBox2.TabIndex = 6;
-            richTextBox2.Text = "";
+            this.richTextBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.richTextBox3.Location = new System.Drawing.Point(315, 219);
+            this.richTextBox3.Name = "richTextBox3";
+            this.richTextBox3.Size = new System.Drawing.Size(450, 175);
+            this.richTextBox3.TabIndex = 4;
+            this.richTextBox3.Text = "";
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(61, 254);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 3;
+            this.button3.Text = "Start";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(61, 219);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "Add";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.ColumnHeadersVisible = false;
+            this.dataGridView2.Location = new System.Drawing.Point(315, 47);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.RowTemplate.Height = 24;
+            this.dataGridView2.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView2.TabIndex = 1;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.ColumnHeadersVisible = false;
+            this.dataGridView1.Location = new System.Drawing.Point(48, 47);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 30;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView1.TabIndex = 0;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(187, 219);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(54, 23);
+            this.button4.TabIndex = 5;
+            this.button4.Text = "DC";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // Form1
             // 
@@ -170,6 +255,9 @@
             this.tabControl1.ResumeLayout(false);
             this.Multiplicator.ResumeLayout(false);
             this.Multiplicator.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -188,7 +276,13 @@
         static public System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        static public System.Windows.Forms.RichTextBox richTextBox2;
+        private System.Windows.Forms.RichTextBox richTextBox3;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        public System.Windows.Forms.RichTextBox richTextBox2;
+        private System.Windows.Forms.Button button4;
     }
 }
 

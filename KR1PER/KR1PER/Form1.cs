@@ -12,7 +12,7 @@ namespace KR1PER
 {
     public partial class Form1 : Form
     {
-        Mult Z1 = new Mult();
+       // Mult Z1 = new Mult();
         public Form1()
         {
             InitializeComponent();            
@@ -27,36 +27,20 @@ namespace KR1PER
         {
 
         }
-
+        
         private void button1_Click(object sender, EventArgs e)
         {
+            /*
             Z1.M1 = Convert.ToInt32(textBox1.Text);
             Z1.M2 = Convert.ToInt32(textBox2.Text);
             textBox3.Text = Convert.ToString(Z1.M1 * Z1.M2);
             
             Z1.ConvToMass();
-            /*
-            VIV(Z1.A1);
-            VIV(Z1.AINV);
-            */
-            /*
-            richTextBox1.Text += Z1.CountOfNumber(Z1.M1);
-            richTextBox1.Text += " ";
-            richTextBox1.Text += Z1.CountOfNumber(Z1.M2);
-            richTextBox1.Text += " ";
-            */
-
-            ///*****
-            
+           
             Z1.MMU();
-            Z1.MRU();
-            
-            ///******
-            Z1.MKB();
-            /*
-            richTextBox1.Text += '\n';
-            richTextBox1.Text += Z1.res_prom1;
-            */
+            Z1.MRU();            
+            Z1.MKB_();
+          */
         }
 
         public void VIV(int[] Arr)
@@ -73,6 +57,27 @@ namespace KR1PER
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Columns.Add("e","e");
+            dataGridView2.Columns.Add("e", "e");
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                dataGridView1.Columns.RemoveAt(dataGridView1.Columns.Count - 1);
+                dataGridView2.Columns.RemoveAt(dataGridView2.Columns.Count - 1);
+            }
+            catch { }
         }
     }
 }

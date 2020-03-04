@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.ExceptionServices;
 
+
+
 namespace KR1PER
 {
     public class Mult
@@ -201,7 +203,7 @@ namespace KR1PER
             return 0;
         }
 
-        public int MKB() //Метод Карацубы
+        public int MKB(int a, int b) //Метод Карацубы
         {
             int[] a1;
             int[] a2;
@@ -211,17 +213,17 @@ namespace KR1PER
             long RX;
             
             
-            n = Math.Max(CountOfNumber(M1), CountOfNumber(M2));
+            n = Math.Max(CountOfNumber(a), CountOfNumber(b));
             n2 = Division_(n, 2);
             if (n % 2 != 0) n++;
 
             A_K = new int[n];
             B_K = new int[n];
-            A_K = Con_en(M1, n);
-            B_K = Con_en(M2, n);
+            A_K = Con_en(a, n);
+            B_K = Con_en(b, n);
 
-            a1 = new int[/*n-*/n2];
-            b1 = new int[/*n-*/n2];
+            a1 = new int[n2];
+            b1 = new int[n2];
             a2 = new int[n2];
             b2 = new int[n2];
 
@@ -235,52 +237,57 @@ namespace KR1PER
                 if (i < n - n2)     b1[i] = B_K[i];
                 else                b2[i-n2] = B_K[i];
             }
-            Form1.richTextBox2.Text += '\n';
-            Form1.richTextBox2.Text += "Метод Карацубы";
+
+            Form1.richTextBox2.Text += "-------*******-------";
             Form1.richTextBox2.Text += '\n';
             Form1.richTextBox2.Text += "n="+n;
             Form1.richTextBox2.Text += '\n';
-            Form1.richTextBox2.Text += "n/2" + n2;
+            Form1.richTextBox2.Text += "n/2= " + n2;
+            Form1.richTextBox2.Text += '\n';
+            Form1.richTextBox2.Text += "a= " + Conv_To_Number(A_K);
+            Form1.richTextBox2.Text += '\n';
+            Form1.richTextBox2.Text += "b= " + Conv_To_Number(B_K);
+            Form1.richTextBox2.Text += '\n';
+            Form1.richTextBox2.Text += "a1= " + string.Join("", a1);
+            Form1.richTextBox2.Text += '\n';
+            Form1.richTextBox2.Text += "a2= " + string.Join("", a2);
+            Form1.richTextBox2.Text += '\n';
+            Form1.richTextBox2.Text += "b1= " + string.Join("", b1);
+            Form1.richTextBox2.Text += '\n';
+            Form1.richTextBox2.Text += "b2= " + string.Join("", b2);
             Form1.richTextBox2.Text += '\n';
             Form1.richTextBox2.Text += Conv_To_Number(a1) + "*" + Conv_To_Number(b1) + "*" + 10 + "^" + n + "+ ((" + Conv_To_Number(a1) + " + " + Conv_To_Number(a2) + ")" + "*(" + Conv_To_Number(b1) + " + " + Conv_To_Number(b2) + ")" + " - " + Conv_To_Number(a1) + "*" + Conv_To_Number(b1) + " - " + Conv_To_Number(a2) + "*" + Conv_To_Number(b2) + ")" + "*" + 10 + "^" + n / 2 + " + " + Conv_To_Number(a2) + "*" + Conv_To_Number(b2);
             RX = (Conv_To_Number(a1) * Conv_To_Number(b1) * (int)Math.Pow(10, n)) + ((Conv_To_Number(a1) + Conv_To_Number(a2)) * (Conv_To_Number(b1) + Conv_To_Number(b2)) - Conv_To_Number(a1) * Conv_To_Number(b1) - Conv_To_Number(a2) * Conv_To_Number(b2)) * (int)Math.Pow(10, n2) + Conv_To_Number(a2) * Conv_To_Number(b2);
 
 
 
-            Form1.richTextBox2.Text += '\n';
+            //Form1.richTextBox2.Text += '\n';
+            Form1.richTextBox2.Text += " Ответ: ";
             Form1.richTextBox2.Text += RX;
             Form1.richTextBox2.Text += '\n';
 
-            /*         
-                    
-           Form1.richTextBox2.Text += string.Join(" ", a1);
-           Form1.richTextBox2.Text += '\n';           
-           Form1.richTextBox2.Text += string.Join(" ", a2);
-           Form1.richTextBox2.Text += '\n';
-           Form1.richTextBox2.Text += string.Join(" ", b1);
-           Form1.richTextBox2.Text += '\n';
-           Form1.richTextBox2.Text += string.Join(" ", b2);
-           Form1.richTextBox2.Text += '\n';
-
-            */
-            VIV1(A_K);
-            VIV1(B_K);
-
-            VIV1(a1);
-            VIV1(a2);
-            VIV1(b1);
-            VIV1(b2);
-            
-
-
-
-
-
+            if (n > 2)
+            {
+                MKB(Conv_To_Number(a1), Conv_To_Number(b1));
+                MKB(Conv_To_Number(a2), Conv_To_Number(b2));
+                MKB((Conv_To_Number(a1) + Conv_To_Number(a2)),(Conv_To_Number(b1) + Conv_To_Number(b2)));
+            }
 
             return 0;
         }
 
-        public int Division_ (int a, int b)
+        public int MKB_ ()//Метод Карацубы, управляющий метод
+        {
+            Form1.richTextBox2.Text += '\n';
+            Form1.richTextBox2.Text += "Метод Карацубы";
+            Form1.richTextBox2.Text += '\n';
+
+            MKB(M1, M2);
+
+            return 0;
+        }
+
+            public int Division_ (int a, int b)
         {
             int R2;
             R2 = a / b;
