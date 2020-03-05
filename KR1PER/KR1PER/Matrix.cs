@@ -8,38 +8,30 @@ namespace KR1PER
 {
     class Matrix
     {
-        public int[,] M1;
-        public int[,] M2;
-        public int[,] MR;
+        public int[][] M1_;
+        public int[][] M2_;
+        public int[][] MR_;
 
-        public int[,] MCH_(int[,] A, int[,] B) //Метод Штрассена
+        
+        public int[][] MCH(int[][] A, int[][] B) //Метод Штрассена дл n=2
         {
-            int[,] C;
-            C = new int[A.GetLength(0), A.GetLength(0)];
-            int[,] d1, d2, d3, d4, d5, d6, d7;
-            
-            return C;
-        }
+            int[][] C;
+            C = new int[A.Length][ ];
+            for (int i = 0; i < C.Length; i++) C[i] = new int[A.Length];
 
-            public int[,] MCH(int[,] A, int[,] B) //Метод Штрассена
-        {
-            int[,] C;
-            C = new int[A.GetLength(0), A.GetLength(0)];
             int d1, d2, d3, d4, d5, d6, d7;
-            d1 = Mult(SUM(A[0, 0], A[1, 1]), SUM(B[0, 0], B[1, 1]));
-            d2 = Mult(RS(A[0, 1], A[1, 1]), SUM(B[1, 0], B[1, 1]));
-            d3 = Mult(RS(A[1, 0], A[0, 0]), SUM(B[0, 0], B[0, 1]));
-            d4 = Mult(SUM(A[0, 0], A[0, 1]), B[1, 1]);
-            d5 = Mult(A[1, 1], RS(B[1, 0], B[0, 0]));
-            d6 = Mult(A[0, 0], RS(B[0, 1], B[1, 1]));
-            d7 = Mult(SUM(A[1, 0], A[1, 1]), B[0, 0]);
+            d1 = Mult(SUM(A[0][0], A[1][1]), SUM(B[0][0], B[1][1]));
+            d2 = Mult(RS(A[0][1], A[1][1]), SUM(B[1][0], B[1][1]));
+            d3 = Mult(RS(A[1][0], A[0][0]), SUM(B[0][0], B[0][1]));
+            d4 = Mult(SUM(A[0][0], A[0][1]), B[1][1]);
+            d5 = Mult(A[1][1], RS(B[1][0], B[0][0]));
+            d6 = Mult(A[0][0], RS(B[0][1], B[1][1]));
+            d7 = Mult(SUM(A[1][0], A[1][1]), B[0][0]);
 
-            
-
-            C[0, 0] = d1 + d2 - d4 + d5;
-            C[1, 1] = d1 + d3 + d6 - d7;
-            C[0, 1] = d4 + d6;
-            C[1, 0] = d5 + d7;
+            C[0][0] = d1 + d2 - d4 + d5;
+            C[1][1] = d1 + d3 + d6 - d7;
+            C[0][1] = d4 + d6;
+            C[1][0] = d5 + d7;
 
             return C;
         }
@@ -48,42 +40,20 @@ namespace KR1PER
         {
             return a * b;
         }
-
-        public int[,] Mult(int[,] a, int[,] b) //умножение матриц
+        
+        public int[][] Mult(int[][] a, int[][] b) //умножение матриц
         {
             return MCH(a, b);
         }
-
-        public int[,] SUM(int[,] a, int[,] b) //сложение матриц
-        {
-            int[,] AR;
-            AR = new int[a.GetLength(0), a.GetLength(0)];
-
-            /*
-             
-             */
-            return AR;
-        }
+               
         public int SUM(int a, int b)
         {
             return a + b;
         }
 
-        public int[,] RS(int[,] a, int[,] b) //разность матриц
-        {
-            int[,] AR;
-            AR = new int[a.GetLength(0), a.GetLength(0)];
-
-            /*
-             
-             */
-            return AR;
-
-        }
-
         public int RS(int a, int b) //разность матриц
         {
-            return a-b;
+            return a - b;
         }
 
         private static void splitMatrix(int[][] a, int[][] a11, int[][] a12, int[][] a21, int[][] a22) //разбитие матрицы
@@ -105,11 +75,12 @@ namespace KR1PER
             int[][] a = new int[n << 1][];
             for (int i = 0; i < a.Length; i++)
                 a[i] = new int[n << 1];
-            
+
             for (int i = 0; i < n; i++)
             {
                 System.Array.Copy(a11[i], 0, a[i], 0, n);
                 System.Array.Copy(a12[i], 0, a[i], n, n);
+                System.Array.Copy(a21[i], 0, a[i + n], 0, n);//
                 System.Array.Copy(a22[i], 0, a[i + n], n, n);
             }
             return a;
@@ -124,8 +95,8 @@ namespace KR1PER
 
         private static int getNewDimension(int[][] a, int[][] b)
         {
-            return 1 << log2(Math.Max(a.Length, Math.Max( a[0].Length, b[0].Length)));
-            
+            return 1 << log2(Math.Max(a.Length, Math.Max(a[0].Length, b[0].Length)));
+
         }
 
         private static int[][] addition2SquareMatrix(int[][] a, int n)
@@ -145,24 +116,62 @@ namespace KR1PER
             return result;
         }
 
-        private static int[][] multiStrassen(int[][] a, int[][] b, int n)
+        public int[][] summation(int[][] a, int[][] b)
         {
-            if (n <= 64)
+            int[][] C = new int[a.Length][];
+            for (int i = 0; i < C.Length; i++) C[i] = new int[a.Length];
+
+            for (int i = 0; i < a.Length; i++)
+                for (int j = 0; j < a.Length; j++)
+                    C[i][j] = a[i][j] + b[i][j];
+            return C;
+        }
+
+        public int[][] subtraction(int[][] a, int[][] b)
+        {
+            int[][] C = new int[a.Length][];
+            for (int i = 0; i < C.Length; i++) C[i] = new int[a.Length];
+
+            for (int i = 0; i < a.Length; i++)
+                for (int j = 0; j < a.Length; j++)
+                    C[i][j] = a[i][j] - b[i][j];
+            return C;
+        }
+
+        public int[][] multiStrassen(int[][] a, int[][] b, int n)
+        {
+            if (n == 2)
             {
-                return multiply(a, b);
+                // return multiply(a, b);
+                int[][] C = MCH(a, b);
+                return C;
             }
 
             n = n >> 1;
 
-            int[][] a11 = new int[n][n];
-            int[][] a12 = new int[n][n];
-            int[][] a21 = new int[n][n];
-            int[][] a22 = new int[n][n];
+            int[][] a11 = new int[n][];
+            for (int i = 0; i < a11.Length; i++) a11[i] = new int[n];
 
-            int[][] b11 = new int[n][n];
-            int[][] b12 = new int[n][n];
-            int[][] b21 = new int[n][n];
-            int[][] b22 = new int[n][n];
+            int[][] a12 = new int[n][];
+            for (int i = 0; i < a12.Length; i++) a12[i] = new int[n];
+
+            int[][] a21 = new int[n][];
+            for (int i = 0; i < a21.Length; i++) a21[i] = new int[n];
+
+            int[][] a22 = new int[n][];
+            for (int i = 0; i < a22.Length; i++) a22[i] = new int[n];
+
+            int[][] b11 = new int[n][];
+            for (int i = 0; i < b11.Length; i++) b11[i] = new int[n];
+
+            int[][] b12 = new int[n][];
+            for (int i = 0; i < b12.Length; i++) b12[i] = new int[n];
+
+            int[][] b21 = new int[n][];
+            for (int i = 0; i < b21.Length; i++) b21[i] = new int[n];
+
+            int[][] b22 = new int[n][];
+            for (int i = 0; i < b22.Length; i++) b22[i] = new int[n];
 
             splitMatrix(a, a11, a12, a21, a22);
             splitMatrix(b, b11, b12, b21, b22);
