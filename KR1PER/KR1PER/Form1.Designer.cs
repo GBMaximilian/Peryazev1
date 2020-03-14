@@ -30,7 +30,7 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Multiplicator = new System.Windows.Forms.TabPage();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -70,7 +70,7 @@
             // 
             // Multiplicator
             // 
-            this.Multiplicator.Controls.Add(this.richTextBox2);
+            this.Multiplicator.Controls.Add(richTextBox2);
             this.Multiplicator.Controls.Add(this.button1);
             this.Multiplicator.Controls.Add(this.textBox3);
             this.Multiplicator.Controls.Add(this.label2);
@@ -87,14 +87,14 @@
             // 
             // richTextBox2
             // 
-            this.richTextBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            richTextBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBox2.Location = new System.Drawing.Point(16, 95);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(756, 296);
-            this.richTextBox2.TabIndex = 6;
-            this.richTextBox2.Text = "";
+            richTextBox2.Location = new System.Drawing.Point(16, 95);
+            richTextBox2.Name = "richTextBox2";
+            richTextBox2.Size = new System.Drawing.Size(756, 296);
+            richTextBox2.TabIndex = 6;
+            richTextBox2.Text = "";
             // 
             // button1
             // 
@@ -281,7 +281,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.DataGridView dataGridView1;
-        public System.Windows.Forms.RichTextBox richTextBox2;
+        static public System.Windows.Forms.RichTextBox richTextBox2;
         private System.Windows.Forms.Button button4;
     }
 }

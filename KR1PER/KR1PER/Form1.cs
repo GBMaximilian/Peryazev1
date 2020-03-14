@@ -12,7 +12,7 @@ namespace KR1PER
 {
     public partial class Form1 : Form
     {
-        // Mult Z1 = new Mult();
+        Mult Z1 = new Mult();
         Matrix Z2 = new Matrix();
         public Form1()
         {
@@ -31,7 +31,7 @@ namespace KR1PER
         
         private void button1_Click(object sender, EventArgs e)
         {
-            /*
+            
             Z1.M1 = Convert.ToInt32(textBox1.Text);
             Z1.M2 = Convert.ToInt32(textBox2.Text);
             textBox3.Text = Convert.ToString(Z1.M1 * Z1.M2);
@@ -41,7 +41,7 @@ namespace KR1PER
             Z1.MMU();
             Z1.MRU();            
             Z1.MKB_();
-          */
+          
         }
 
         public void VIV(int[] Arr)
@@ -68,10 +68,11 @@ namespace KR1PER
 
         private void button3_Click(object sender, EventArgs e)
         {
+            /*
             Z2.M1 = new int[dataGridView1.Columns.Count, dataGridView1.Columns.Count];
             Z2.M2 = new int[dataGridView1.Columns.Count, dataGridView1.Columns.Count];
             Z2.MR = new int[dataGridView1.Columns.Count, dataGridView1.Columns.Count];
-
+            */
             Z2.M1_ = new int[dataGridView1.Columns.Count][];
             for (int i = 0; i < Z2.M1_.Length; i++) Z2.M1_[i] = new int[dataGridView1.Columns.Count];
 
