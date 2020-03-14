@@ -45,6 +45,7 @@ namespace KR1PER
             Z1.MMU();
             Z1.MRU();            
             Z1.MKB_();
+            Z1.MSU();
           
         }
 
@@ -235,11 +236,14 @@ namespace KR1PER
             }
             richTextBox4.Text += OutNumDoubleArrayInCapacity(Z2.MD_) + "\n = \n";
             richTextBox4.Text += OutNumDoubleArrayForDeterminantInCapacity(Z2.MDR_) + "\n = \n";
-            for (int l = 0; l < Z2.MDR_.GetLength(0) - 1; l++)
+            int[,] MDR_1 = new int[Z2.MDR_.GetLength(0) - 2, Z2.MDR_.GetLength(1) - 1];
+            for (int l = 0; l < Z2.MDR_.GetLength(0) - 2; l++)
             {
-                int [,] MDR_1 = new int[Z2.MDR_.GetLength(0) - 2 - l, Z2.MDR_.GetLength(1) - 1 - l];
+                MDR_1 = new int[MDR_1.GetLength(0) - 2, MDR_1.GetLength(1) - 1];
+
                 for (int i = 0; i < MDR_1.GetLength(0); i++)
                 {
+
                     if (i % 2 == 1)
                     {
 

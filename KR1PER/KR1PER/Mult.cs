@@ -157,15 +157,62 @@ namespace KR1PER
             rtb.Text += '\n';
             VIV1(A1_D);
             VIV1(A2_D);
-            rtb.Text += "-------";
-            for (int i = A1_D.Length - 1; i >= 0; i--) // по количеству итераций, разных перекрестий
+            rtb.Text += '\n';
+            for (int i = 0; i < A1_D.Length; i++)
             {
-                for (int j = i; j >= 0; j--) // по количеству итераций сдвига перекрестия
-                {
-                    //нужна динамическая матрица
-                }
+                rtb.Text += "  " + A1_D[i];
             }
+            rtb.Text += '\n';
+            for (int i = 0; i < A2_D.Length; i++)
+            {
+                rtb.Text += "  " + A2_D[i];
+            }
+            rtb.Text += '\n';
+            rtb.Text += "-------";
             
+            int n = Math.Max(CountOfNumber(M1), CountOfNumber(M2));
+            int[] terms = new int[n];
+            for (int i = 0; i < n; i++)
+            {
+                int term = 0;
+                if (i == 0)
+                { 
+                    for (int j = 0; j < n - i; j++)
+                    {
+
+                        term += (int)Math.Pow(10, j * 2) * (A1_D[n - i - j - 1] * A2_D[n - i - j - 1]);
+                    } 
+                    
+                }
+                else
+                {
+                    for (int j = 0; j < n - i; j++)
+                    {
+
+                        term += (int)Math.Pow(10, j * 2 + i) * (A1_D[n-1-j] * A2_D[n - 1 - j - i] + A1_D[n - 1 - j - i] * A2_D[n - 1 - j]);
+                    }
+                }
+                terms[i] = term;
+                 
+            }
+            int n_res = n * 2;
+            for (int i = 0; i < n; i++)
+            {
+                rtb.Text += "\n";
+                for (int j = 0; j < i; j++)
+                {
+                    rtb.Text += "  ";
+                }
+                for (int j = 0; j < n_res - CountOfNumber(terms[i]) - i; j++)
+                {
+                    rtb.Text += "0";
+                }
+                rtb.Text += (terms[i]/ (int)Math.Pow(10, i)).ToString();
+            }
+                
+
+
+
             return 0;
         }
 
