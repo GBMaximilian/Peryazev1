@@ -31,7 +31,7 @@ namespace KR1PER
         
         private void button1_Click(object sender, EventArgs e)
         {
-            Z1 = new Mult(Form1.richTextBox2);
+            Z1 = new Mult(richTextBox2);
 
 
             Z1.M1 = Convert.ToInt32(textBox1.Text);
@@ -173,6 +173,20 @@ namespace KR1PER
             {
                 dataGridView1.Columns.RemoveAt(dataGridView1.Columns.Count - 1);
                 dataGridView2.Columns.RemoveAt(dataGridView2.Columns.Count - 1);
+            }
+            catch { }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            dataGridView3.Columns.Add("e", "e");
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                dataGridView3.Columns.RemoveAt(dataGridView1.Columns.Count - 1);
             }
             catch { }
         }
