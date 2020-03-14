@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static KR1PER.Work_with_int;
 
 namespace KR1PER
 {
@@ -196,29 +197,83 @@ namespace KR1PER
         private void button6_Click(object sender, EventArgs e)
         {
 
-            Z2.MD_ = new int[dataGridView3.Columns.Count][];
-            for (int i = 0; i < Z2.MD_.Length; i++) Z2.MD_[i] = new int[dataGridView3.Columns.Count];
+            Z2.MD_ = new int[dataGridView3.Columns.Count, dataGridView3.Columns.Count];
+            
 
-            Z2.MDR_ = new int[dataGridView3.Columns.Count*2-1][];
-            for (int i = 0; i < Z2.MDR_.Length; i++) Z2.MDR_[i] = new int[dataGridView3.Columns.Count];
+            Z2.MDR_ = new int[dataGridView3.Columns.Count*2-1, dataGridView3.Columns.Count];
+            
 
             for (int i = 0; i < dataGridView3.Columns.Count; i++)
             {
                 for (int j = 0; j < dataGridView3.Columns.Count; j++)
                 {
-                    Z2.MD_[i][j] = Convert.ToInt32(dataGridView3[j, i].Value); //у грида инверсия индексов
+                    Z2.MD_[i, j] = Convert.ToInt32(dataGridView3[j, i].Value); 
                 }
             }
-
-            for (int i = 0; i < Z2.MD_.Length; i++)
+            for (int i = 0, k = 0; i < Z2.MDR_.GetLength(0); i++)
             {
-                richTextBox4.Text += '|';
-                for (int j = 0; j < Z2.MD_.Length; j++)
+                if (i%2 == 1 )
                 {
-                    richTextBox4.Text += Z2.MD_[i][j] + " ";
+
+                    for (int j = 0; j < Z2.MDR_.GetLength(1) - 1; j++)
+                    {
+                        Z2.MDR_[i, j] = Z2.MD_[k, j] * Z2.MD_[k + 1, j + 1] - Z2.MD_[k, j + 1] * Z2.MD_[k + 1, j];
+                        //Z2.MDR_[i, j] = 0;
+                    }
+
+                    Z2.MDR_[i, Z2.MDR_.GetLength(1) - 1] = int.MaxValue;
+                    k++;
                 }
-                richTextBox4.Text += "|\n";
+                else
+                {
+                    for (int j = 0; j < Z2.MDR_.GetLength(1); j++)
+                    {
+                        Z2.MDR_[i, j] = Z2.MD_[k, j];
+                    }
+                }
+                
             }
+            richTextBox4.Text += OutNumDoubleArrayInCapacity(Z2.MD_) + "\n = \n";
+            richTextBox4.Text += OutNumDoubleArrayForDeterminantInCapacity(Z2.MDR_) + "\n = \n";
+            for (int l = 0; l < Z2.MDR_.GetLength(0) - 1; l++)
+            {
+                int [,] MDR_1 = new int[Z2.MDR_.GetLength(0) - 2 - l, Z2.MDR_.GetLength(1) - 1 - l];
+                for (int i = 0; i < MDR_1.GetLength(0); i++)
+                {
+                    if (i % 2 == 1)
+                    {
+
+                        for (int j = 0; j < MDR_1.GetLength(1) - 1; j++)
+                        {
+                            MDR_1[i, j] = (Z2.MDR_[i, j] * Z2.MDR_[i+2, j+1] - Z2.MDR_[i, j + 1] * Z2.MDR_[i + 2, j])/ Z2.MDR_[i+1, j+1];
+                            richTextBox4.Text += $"\n{MDR_1[i, j]}=({Z2.MDR_[i, j]}*{Z2.MDR_[i+2, j+1]}-{Z2.MDR_[i, j+1]}*{Z2.MDR_[i+2, j]})/{Z2.MDR_[i+1, j+1]}\n";
+                            //Z2.MDR_[i, j] = 0;
+                        }
+                    }
+                    else
+                    {
+                        for (int j = 0; j < MDR_1.GetLength(1); j++)
+                        {
+                            MDR_1[i, j] = Z2.MDR_[i + 1, j];
+                        }
+                    }
+                }
+
+                Z2.MDR_ = new int[MDR_1.GetLength(0), MDR_1.GetLength(1)];
+                for (int i = 0; i < MDR_1.GetLength(0); i++)
+                {
+                    for (int j = 0; j < MDR_1.GetLength(1); j++)
+                    {
+                        Z2.MDR_[i, j] = MDR_1[i, j];
+                    }
+                            
+                    
+                }
+                richTextBox4.Text += OutNumDoubleArrayForDeterminantInCapacity(Z2.MDR_) + "\n = \n";
+            }
+            
+
+
 
         }
     }
