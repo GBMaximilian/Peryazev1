@@ -12,7 +12,7 @@ namespace KR1PER
 {
     public partial class Form1 : Form
     {
-        Mult Z1 = new Mult();
+        Mult Z1;
         Matrix Z2 = new Matrix();
         public Form1()
         {
@@ -31,7 +31,9 @@ namespace KR1PER
         
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            Z1 = new Mult(Form1.richTextBox2);
+
+
             Z1.M1 = Convert.ToInt32(textBox1.Text);
             Z1.M2 = Convert.ToInt32(textBox2.Text);
             textBox3.Text = Convert.ToString(Z1.M1 * Z1.M2);

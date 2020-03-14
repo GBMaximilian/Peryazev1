@@ -18,3 +18,12 @@ F:\GitHub_projects\GitHub\Peryazev1\KR1PER\KR1PER\obj\Debug\KR1PER.csproj.Genera
 F:\GitHub_projects\GitHub\Peryazev1\KR1PER\KR1PER\obj\Debug\KR1PER.csproj.CoreCompileInputs.cache
 F:\GitHub_projects\GitHub\Peryazev1\KR1PER\KR1PER\obj\Debug\KR1PER.exe
 F:\GitHub_projects\GitHub\Peryazev1\KR1PER\KR1PER\obj\Debug\KR1PER.pdb
+D:\Github\Peryazev1\KR1PER\KR1PER\bin\Debug\KR1PER.exe.config
+D:\Github\Peryazev1\KR1PER\KR1PER\bin\Debug\KR1PER.exe
+D:\Github\Peryazev1\KR1PER\KR1PER\bin\Debug\KR1PER.pdb
+D:\Github\Peryazev1\KR1PER\KR1PER\obj\Debug\KR1PER.csprojAssemblyReference.cache
+D:\Github\Peryazev1\KR1PER\KR1PER\obj\Debug\KR1PER.Form1.resources
+D:\Github\Peryazev1\KR1PER\KR1PER\obj\Debug\KR1PER.Properties.Resources.resources
+D:\Github\Peryazev1\KR1PER\KR1PER\obj\Debug\KR1PER.csproj.GenerateResource.cache
+D:\Github\Peryazev1\KR1PER\KR1PER\obj\Debug\KR1PER.exe
+D:\Github\Peryazev1\KR1PER\KR1PER\obj\Debug\KR1PER.pdb
