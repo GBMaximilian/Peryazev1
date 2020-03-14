@@ -16,7 +16,8 @@ namespace KR1PER
         Matrix Z2 = new Matrix();
         public Form1()
         {
-            InitializeComponent();            
+            InitializeComponent();
+            Z1 = new Mult(richTextBox2);
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -31,7 +32,7 @@ namespace KR1PER
         
         private void button1_Click(object sender, EventArgs e)
         {
-            Z1 = new Mult(richTextBox2);
+            
 
 
             Z1.M1 = Convert.ToInt32(textBox1.Text);
@@ -186,7 +187,8 @@ namespace KR1PER
         {
             try
             {
-                dataGridView3.Columns.RemoveAt(dataGridView1.Columns.Count - 1);
+                dataGridView3.Columns.RemoveAt(dataGridView3.Columns.Count - 1);
+
             }
             catch { }
         }
