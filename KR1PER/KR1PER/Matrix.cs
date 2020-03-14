@@ -11,8 +11,10 @@ namespace KR1PER
         public int[][] M1_;
         public int[][] M2_;
         public int[][] MR_;
+        public int[][] MD_;
+        public int[][] MDR_;
 
-        
+
         public int[][] MCH(int[][] A, int[][] B) //Метод Штрассена дл n=2
         {
             int[][] C;

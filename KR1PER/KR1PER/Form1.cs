@@ -192,5 +192,34 @@ namespace KR1PER
             }
             catch { }
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+            Z2.MD_ = new int[dataGridView3.Columns.Count][];
+            for (int i = 0; i < Z2.MD_.Length; i++) Z2.MD_[i] = new int[dataGridView3.Columns.Count];
+
+            Z2.MDR_ = new int[dataGridView3.Columns.Count*2-1][];
+            for (int i = 0; i < Z2.MDR_.Length; i++) Z2.MDR_[i] = new int[dataGridView3.Columns.Count];
+
+            for (int i = 0; i < dataGridView3.Columns.Count; i++)
+            {
+                for (int j = 0; j < dataGridView3.Columns.Count; j++)
+                {
+                    Z2.MD_[i][j] = Convert.ToInt32(dataGridView3[j, i].Value); //у грида инверсия индексов
+                }
+            }
+
+            for (int i = 0; i < Z2.MD_.Length; i++)
+            {
+                richTextBox4.Text += '|';
+                for (int j = 0; j < Z2.MD_.Length; j++)
+                {
+                    richTextBox4.Text += Z2.MD_[i][j] + " ";
+                }
+                richTextBox4.Text += "|\n";
+            }
+
+        }
     }
 }
