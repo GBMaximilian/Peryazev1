@@ -14,11 +14,12 @@ namespace KR1PER
     public partial class Form1 : Form
     {
         Mult Z1;
-        Matrix Z2 = new Matrix();
+        Matrix Z2;
         public Form1()
         {
             InitializeComponent();
             Z1 = new Mult(richTextBox2);
+            Z2 = new Matrix(richTextBox3);
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -107,6 +108,7 @@ namespace KR1PER
                 }
             }
 
+            richTextBox3.Text += "\n Матрица a\n";
             for (int i = 0; i < Z2.M1_.Length; i++)
             {
                 for (int j = 0; j < Z2.M1_.Length; j++)
@@ -115,7 +117,7 @@ namespace KR1PER
                 }
                 richTextBox3.Text += '\n';
             }
-
+            richTextBox3.Text += "\n Матрица b\n";
             for (int i = 0; i < Z2.M2_.GetLength(0); i++)
             {
                 for (int j = 0; j < Z2.M2_.GetLength(0); j++)
