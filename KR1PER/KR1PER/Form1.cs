@@ -288,6 +288,7 @@ namespace KR1PER
             div.SimplePascal();
             div.Rachinskiy1();
             div.Rachinskiy2();
+            div.Rachinskiy3();
 
         }
 
