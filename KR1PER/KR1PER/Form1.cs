@@ -286,6 +286,12 @@ namespace KR1PER
             Div div = new Div(richTextBox5, Convert.ToInt32(textBox6.Text), Convert.ToInt32(textBox5.Text));
             div.Pascal();
             div.SimplePascal();
+            div.Rachinskiy1();
+
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }
