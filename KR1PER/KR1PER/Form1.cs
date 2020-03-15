@@ -146,8 +146,7 @@ namespace KR1PER
             }
             */
             richTextBox3.Text += '\n';
-            richTextBox3.Text += "Ответ";
-            richTextBox3.Text += '\n';
+            
             //Z2.MR =  Z2.MCH(Z2.M1, Z2.M2);
 
             Z2.MR_ = Z2.multiStrassen(Z2.M1_, Z2.M2_, dataGridView1.Columns.Count);/////********
@@ -161,6 +160,9 @@ namespace KR1PER
                 richTextBox3.Text += '\n';
             }
             */
+            richTextBox3.Text += '\n';
+            richTextBox3.Text += "Ответ";
+            richTextBox3.Text += '\n';
             for (int i = 0; i < Z2.MR_.Length; i++)
             {
                 for (int j = 0; j < Z2.MR_.Length; j++)
@@ -297,6 +299,15 @@ namespace KR1PER
         private void textBox4_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Введите квадратную матрицу со стороной, равной 2^n,\n" +
+                "если сторона не соответствует - до дополните матрицу до таковой\n" +
+                "нулевыми строками (справа и снизу), " +
+                "например:\n2 6 8\t\t2 6 8 0\n" +
+                "1 7 5\t\t1 7 5 0\n8 0 2\t\t8 0 2 0\n\t\t0 0 0 0");
         }
     }
 }

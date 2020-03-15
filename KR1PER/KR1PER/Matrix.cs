@@ -66,7 +66,7 @@ namespace KR1PER
             C[1][0] = d5 + d7;
             str += $"c10 = {d5} + {d7} = {C[1][0]}\n";
 
-            str += "\n\t\tоткат\n \n ";
+            str += "\t\t-*-откат\n";
 
             rtb.Text += str;
             return C;
@@ -249,43 +249,43 @@ namespace KR1PER
             rtb.Text += "(b11+b22)=\n";MTS(ref str, summation(b11, b22));
             int[][] p1 = multiStrassen(summation(a11, a22), summation(b11, b22), n);
             rtb.Text += "d1=\n"; MTS(ref str, p1);
-
+            rtb.Text += "\n==*==\n";
             rtb.Text += "d7 = (a21+a22)*(b11)\n";
             rtb.Text += "(a21+a22)=\n"; MTS(ref str, summation(a21, a22));
             rtb.Text += "(b11)=\n"; MTS(ref str, b11);
             int[][] p2 = multiStrassen(summation(a21, a22), b11, n);
             rtb.Text += "d7=\n"; MTS(ref str, p2);
-
+            rtb.Text += "\n==*==\n";
             rtb.Text += "d6 = (a11)*(b12-b22)\n";
             rtb.Text += "(a11)=\n"; MTS(ref str, a11);
             rtb.Text += "(b12-b22)=\n"; MTS(ref str, subtraction(b12, b22));
             int[][] p3 = multiStrassen(a11, subtraction(b12, b22), n);
             rtb.Text += "d6=\n"; MTS(ref str, p3);
-
+            rtb.Text += "\n==*==\n";
             rtb.Text += "d5 = (a22)*(b21-b11)\n";
             rtb.Text += "(a22)=\n"; MTS(ref str, a22);
             rtb.Text += "(b21-b11)=\n"; MTS(ref str, subtraction(b21, b11));
             int[][] p4 = multiStrassen(a22, subtraction(b21, b11), n);
             rtb.Text += "d5=\n"; MTS(ref str, p4);
-
+            rtb.Text += "\n==*==\n";
             rtb.Text += "d4 = (a11+a12)*(b22)\n";
             rtb.Text += "(a11+a12)=\n"; MTS(ref str, summation(a11, a12));
             rtb.Text += "(b22)=\n"; MTS(ref str, b22);
             int[][] p5 = multiStrassen(summation(a11, a12), b22, n);
             rtb.Text += "d4=\n"; MTS(ref str, p5);
-
+            rtb.Text += "\n==*==\n";
             rtb.Text += "d3 = (a21-a11)*(b11+b12)\n";
             rtb.Text += "(a21-a11)=\n"; MTS(ref str, subtraction(a21, a11));
             rtb.Text += "(b11+b12)=\n"; MTS(ref str, summation(b11, b12));
             int[][] p6 = multiStrassen(subtraction(a21, a11), summation(b11, b12), n);
             rtb.Text += "d3=\n"; MTS(ref str, p6);
-
+            rtb.Text += "\n==*==\n";
             rtb.Text += "d2 = (a12-a22)*(b21+b22)\n";
             rtb.Text += "(a12-a22)=\n"; MTS(ref str, subtraction(a12, a22));
             rtb.Text += "(b21+b22)=\n"; MTS(ref str, summation(b21, b22));
             int[][] p7 = multiStrassen(subtraction(a12, a22), summation(b21, b22), n);
             rtb.Text += "d2=\n"; MTS(ref str, p7);
-
+            rtb.Text += "\n==*==\n";
             rtb.Text += "c11 = d1+d2-d4+d5\n";
             int[][] c11 = summation(summation(p1, p4), subtraction(p7, p5));
             MTS(ref str, c11);
@@ -300,6 +300,7 @@ namespace KR1PER
             MTS(ref str, c22);
 
             rtb.Text += str;
+
             return collectMatrix(c11, c12, c21, c22);            
         }
 
