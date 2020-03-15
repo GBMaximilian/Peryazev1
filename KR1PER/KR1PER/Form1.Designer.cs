@@ -51,9 +51,17 @@
             this.button7 = new System.Windows.Forms.Button();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.richTextBox4 = new System.Windows.Forms.RichTextBox();
+            this.button8 = new System.Windows.Forms.Button();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.richTextBox5 = new System.Windows.Forms.RichTextBox();
             this.tabControl1.SuspendLayout();
             this.Multiplicator.SuspendLayout();
             this.Determinant.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -170,11 +178,18 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.richTextBox5);
+            this.tabPage1.Controls.Add(this.button8);
+            this.tabPage1.Controls.Add(this.textBox4);
+            this.tabPage1.Controls.Add(this.label3);
+            this.tabPage1.Controls.Add(this.label4);
+            this.tabPage1.Controls.Add(this.textBox5);
+            this.tabPage1.Controls.Add(this.textBox6);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Size = new System.Drawing.Size(768, 397);
             this.tabPage1.TabIndex = 2;
-            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.Text = "Divisibility";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // tabPage2
@@ -310,6 +325,66 @@
             this.richTextBox4.TabIndex = 10;
             this.richTextBox4.Text = "";
             // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(18, 70);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(75, 23);
+            this.button8.TabIndex = 11;
+            this.button8.Text = "START";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(345, 32);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(100, 22);
+            this.textBox4.TabIndex = 10;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(252, 36);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(16, 17);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "?";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(125, 36);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(12, 17);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "/";
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(145, 31);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(100, 22);
+            this.textBox5.TabIndex = 7;
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(18, 32);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(100, 22);
+            this.textBox6.TabIndex = 6;
+            // 
+            // richTextBox5
+            // 
+            this.richTextBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.richTextBox5.Location = new System.Drawing.Point(12, 99);
+            this.richTextBox5.Name = "richTextBox5";
+            this.richTextBox5.Size = new System.Drawing.Size(756, 296);
+            this.richTextBox5.TabIndex = 12;
+            this.richTextBox5.Text = "";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -322,6 +397,8 @@
             this.Multiplicator.ResumeLayout(false);
             this.Multiplicator.PerformLayout();
             this.Determinant.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -356,6 +433,13 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.DataGridView dataGridView3;
         public System.Windows.Forms.RichTextBox richTextBox2;
+        public System.Windows.Forms.RichTextBox richTextBox5;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBox6;
     }
 }
 

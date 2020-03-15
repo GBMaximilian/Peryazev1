@@ -384,7 +384,7 @@ namespace KR1PER
             return mas;
         }
 
-        public int CountOfNumber(int x) //подсчитывает количество цифр в числе х
+        public static int CountOfNumber(int x) //подсчитывает количество цифр в числе х
         {
             int CON = 0;
             while (x > 0)

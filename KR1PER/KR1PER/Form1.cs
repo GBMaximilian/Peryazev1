@@ -280,5 +280,12 @@ namespace KR1PER
 
 
         }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            Div div = new Div(richTextBox5, Convert.ToInt32(textBox6.Text), Convert.ToInt32(textBox5.Text));
+            div.Pascal();
+
+        }
     }
 }
