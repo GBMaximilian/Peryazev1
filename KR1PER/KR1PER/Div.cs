@@ -128,7 +128,7 @@ namespace KR1PER
                 b = d % 10;
                 a = (d - b) / 10;
                 n1 = n_d;
-                n_d = m * b - a * k;
+                n_d = Math.Abs(m * b - a * k);
                 str += $"({b}*{m} - {a}*{k})/{d} <=> {n_d}/{d}\n";
                 str += " <=> ";
                 if (n_d < d && n_d != 0)
@@ -141,6 +141,60 @@ namespace KR1PER
                 }
             }
             rtb.Text += str;
+        }
+
+        public void Rachinskiy2()
+        {
+            string str = "";
+            str += "\n Метод Рачинского 2: \n";
+            str += $"\nn = {n}, p = {d}\n";
+            str += "n = 10*m + k (0<=k<=9)\n";
+            str += "p = 10*a + b (0<=b<=9)\n";
+            str += "q = (p*(b*)+1)/10 ,где (b*) = (b, если b = 3;7) || (10 - b, если b = 1;9)\n";
+            str += "n/p <=> (m + k*q)/p\n\n";
+            int q = 0, b, m, k, n1 = 0;
+            int n_d = n;
+
+            b = d % 10;
+            if (b == 1 || b == 9)
+            {
+                b = 10 - b;
+            }
+            q = (d * b + 1) / 10;
+            str += $"q = ({d}*{b} + 1) / 10\n";
+
+
+            str += $"{n_d}/{d} <=> ";
+
+            while (n_d > d && n1 != n_d)
+            {
+                k = n_d % 10;
+                m = (n_d - k) / 10;
+                /*  деланм 1 раз так как p не меняется => и b тоже
+                b = d % 10;
+                if (b == 1 || b == 9)
+                {
+                    b = 10 - b;
+                }
+                q = (d * b + 1) / 10;
+                str += $"q = ({d} * {b} + 1) / 10\n";
+                */
+                n1 = n_d;
+                n_d = Math.Abs(m + k * q);
+                str += $"{m} + {k}*{q} <=> {n_d}/{d}\n";
+                str += " <=> ";
+
+                if (n_d < d && n_d != 0)
+                {
+                    str += $"Ответ: {n_d} Не делится на {d}";
+                }
+                if (n_d == d || n_d == 0)
+                {
+                    str += $"Ответ: {n_d} Делится на {d}";
+                }
+            }
+            rtb.Text += str;
+
         }
     }
 }
