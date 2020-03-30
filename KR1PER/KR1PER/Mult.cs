@@ -228,7 +228,8 @@ namespace KR1PER
 
             while(M1_D >= 1)
             {
-                rtb.Text += '\n' + M1_D + "  " + M2_D;
+                rtb.Text += $"{M1_D}   {M2_D}\n";
+                //rtb.Text += '\n' + M1 + "  " + M2;
                 if (M1_D % 2 != 0)
                 {
                     
