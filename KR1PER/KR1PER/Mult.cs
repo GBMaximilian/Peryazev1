@@ -228,7 +228,7 @@ namespace KR1PER
 
             while(M1_D >= 1)
             {
-                rtb.Text += $"{M1_D}   {M2_D}\n";
+                rtb.Text += $"{M1_D}   {M2_D}";
                 //rtb.Text += '\n' + M1 + "  " + M2;
                 if (M1_D % 2 != 0)
                 {
@@ -241,7 +241,8 @@ namespace KR1PER
                    
                 }
                 M1_D = M1_D / 2;
-                M2_D = M2_D * 2;                
+                M2_D = M2_D * 2;
+                rtb.Text += '\n';
             }
             rtb.Text += '\n';
             rtb.Text += "Складываем все значения с обозначением **, получаем ответ: ";
