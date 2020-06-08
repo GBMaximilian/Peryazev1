@@ -35,8 +35,6 @@ namespace KR1PER
         private void button1_Click(object sender, EventArgs e)
         {
             
-
-
             Z1.M1 = Convert.ToInt32(textBox1.Text);
             Z1.M2 = Convert.ToInt32(textBox2.Text);
             textBox3.Text = Convert.ToString(Z1.M1 * Z1.M2);

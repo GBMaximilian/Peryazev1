@@ -31,6 +31,10 @@ namespace KR1PER
         {
             this.rtb = rtb;
         }
+        public Mult()
+        {
+            
+        }
 
         public void ConvToMass()
         {
@@ -218,22 +222,22 @@ namespace KR1PER
 
         public int MRU() // метод русского уиножения
         {
-            rtb.Text += '\n';
+            /*rtb.Text += '\n';
             rtb.Text += '\n';
             rtb.Text += "Метод Русского умножения";
-            rtb.Text += '\n';
+            rtb.Text += '\n';*/
             int M1_D = M1;
             int M2_D = M2;
             int Result = 0;
 
             while(M1_D >= 1)
             {
-                rtb.Text += $"{M1_D}   {M2_D}";
+ //               rtb.Text += $"{M1_D}   {M2_D}";
                 //rtb.Text += '\n' + M1 + "  " + M2;
                 if (M1_D % 2 != 0)
                 {
                     
-                    rtb.Text += "**";
+ //                   rtb.Text += "**";
                     Result += M2_D;
                 }
                 else
@@ -242,14 +246,14 @@ namespace KR1PER
                 }
                 M1_D = M1_D / 2;
                 M2_D = M2_D * 2;
-                rtb.Text += '\n';
+//                rtb.Text += '\n';
             }
-            rtb.Text += '\n';
+ /*           rtb.Text += '\n';
             rtb.Text += "Складываем все значения с обозначением **, получаем ответ: ";
             rtb.Text += Result;
             rtb.Text += '\n';
-
-            return 0;
+*/
+            return Result;
         }
 
         public int MKB(int a, int b) //Метод Карацубы

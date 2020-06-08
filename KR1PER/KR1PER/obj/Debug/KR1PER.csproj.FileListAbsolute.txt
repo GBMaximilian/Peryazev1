@@ -11,7 +11,6 @@ C:\Users\Георгий\source\repos\KR1PER\KR1PER\obj\Debug\KR1PER.pdb
 F:\GitHub_projects\GitHub\Peryazev1\KR1PER\KR1PER\bin\Debug\KR1PER.exe.config
 F:\GitHub_projects\GitHub\Peryazev1\KR1PER\KR1PER\bin\Debug\KR1PER.exe
 F:\GitHub_projects\GitHub\Peryazev1\KR1PER\KR1PER\bin\Debug\KR1PER.pdb
-F:\GitHub_projects\GitHub\Peryazev1\KR1PER\KR1PER\obj\Debug\KR1PER.csprojAssemblyReference.cache
 F:\GitHub_projects\GitHub\Peryazev1\KR1PER\KR1PER\obj\Debug\KR1PER.Form1.resources
 F:\GitHub_projects\GitHub\Peryazev1\KR1PER\KR1PER\obj\Debug\KR1PER.Properties.Resources.resources
 F:\GitHub_projects\GitHub\Peryazev1\KR1PER\KR1PER\obj\Debug\KR1PER.csproj.GenerateResource.cache
