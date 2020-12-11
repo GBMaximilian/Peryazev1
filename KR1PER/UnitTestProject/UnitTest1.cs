@@ -13,6 +13,7 @@ namespace UnitTestProject
             // исходные данные
 
             int a;
+            //abcd
             int b;
             int expected;
             int i = 100;
