@@ -266,17 +266,17 @@ namespace KR1PER
             richTextBox4.Text += OutNumDoubleArrayInCapacity(Z2.MD_) + "\n = \n";
             richTextBox4.Text += OutNumDoubleArrayForDeterminantInCapacity(Z2.MDR_) + "\n = \n";
             int[,] MDR_1 = new int[Z2.MDR_.GetLength(0) - 2, Z2.MDR_.GetLength(1) - 1];
-            for (int l = 0; l < Z2.MDR_.GetLength(0) - 2; l++)
+            //for (int l = 0; l < Z2.MDR_.GetLength(0) - 2; l++)
+            if ((DeterminantChio(1, 1, 2, 2, Z2.MD_) != 0) && Z2.MD_[1, 1] * Z2.MD_[1, 2] * Z2.MD_[2, 1] * Z2.MD_[2, 2] != 0)
             {
-                MDR_1 = new int[MDR_1.GetLength(0) - 2, MDR_1.GetLength(1) - 1];
 
-                for (int i = 0; i < MDR_1.GetLength(0); i++)
+                for (int i = 0; i < 5; i++)
                 {
 
                     if (i % 2 == 1)
                     {
 
-                        for (int j = 0; j < MDR_1.GetLength(1) - 1; j++)
+                        for (int j = 0; j < 2; j++)
                         {
                             MDR_1[i, j] = (Z2.MDR_[i, j] * Z2.MDR_[i+2, j+1] - Z2.MDR_[i, j + 1] * Z2.MDR_[i + 2, j])/ Z2.MDR_[i+1, j+1];
                             richTextBox4.Text += $"\n{MDR_1[i, j]}=({Z2.MDR_[i, j]}*{Z2.MDR_[i+2, j+1]}-{Z2.MDR_[i, j+1]}*{Z2.MDR_[i+2, j]})/{Z2.MDR_[i+1, j+1]}\n";
@@ -285,7 +285,7 @@ namespace KR1PER
                     }
                     else
                     {
-                        for (int j = 0; j < MDR_1.GetLength(1); j++)
+                        for (int j = 0; j < 3; j++)
                         {
                             MDR_1[i, j] = Z2.MDR_[i + 1, j];
                         }
@@ -299,10 +299,16 @@ namespace KR1PER
                     {
                         Z2.MDR_[i, j] = MDR_1[i, j];
                     }
-                            
-                    
                 }
                 richTextBox4.Text += OutNumDoubleArrayForDeterminantInCapacity(Z2.MDR_) + "\n = \n";
+                richTextBox4.Text += $"({MDR_1[1, 0]} * {MDR_1[3, 1]} - {MDR_1[1, 1]} * {MDR_1[3, 0]}) / {MDR_1[2, 1]} " +
+                    $"= {(MDR_1[1, 0]*MDR_1[3, 1] - MDR_1[1, 1] * MDR_1[3, 0])/MDR_1[2,1]}\n";
+
+
+            } 
+            else
+            {
+                richTextBox4.Text += "Dodgson failed\n\n";
             }
             
 
