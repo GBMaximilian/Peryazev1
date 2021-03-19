@@ -10,6 +10,7 @@ namespace KR1PER
 {
     public class Mult
     {
+        private const string V = "---------------------";
         public int M1;
         public int M2;
         public int[] A1;
@@ -55,12 +56,12 @@ namespace KR1PER
             A2_D = Con_en(M2, Math.Max(CountOfNumber(M1), CountOfNumber(M2)));
         }
 
-        public int MMU() // метод методического умножения
+        public int MMU() // метод Фурье
         {
             int[] res;
 
             rtb.Text += '\n';
-            rtb.Text += "Метод Методического умножения";
+            rtb.Text += "Метод Фурье";
             rtb.Text += '\n';
 
             int k = CountOfNumber(M1) + CountOfNumber(M2) - 1;
@@ -213,7 +214,7 @@ namespace KR1PER
                 }
                 rtb.Text += (terms[i]/ (int)Math.Pow(10, i)).ToString();
             }
-                
+            rtb.Text += '\n' + (M1*M2).ToString();
 
 
 
@@ -222,22 +223,22 @@ namespace KR1PER
 
         public int MRU() // метод русского уиножения
         {
-            /*rtb.Text += '\n';
+            rtb.Text += '\n';
             rtb.Text += '\n';
             rtb.Text += "Метод Русского умножения";
-            rtb.Text += '\n';*/
+            rtb.Text += '\n';
             int M1_D = M1;
             int M2_D = M2;
             int Result = 0;
 
             while(M1_D >= 1)
             {
- //               rtb.Text += $"{M1_D}   {M2_D}";
-                //rtb.Text += '\n' + M1 + "  " + M2;
+                rtb.Text += $"{M1_D}   {M2_D}";
+                //rtb.Text += '\n' + M1.ToString() + "  " + M2;
                 if (M1_D % 2 != 0)
                 {
-                    
- //                   rtb.Text += "**";
+
+                    rtb.Text += "**";
                     Result += M2_D;
                 }
                 else
@@ -246,13 +247,13 @@ namespace KR1PER
                 }
                 M1_D = M1_D / 2;
                 M2_D = M2_D * 2;
-//                rtb.Text += '\n';
+                rtb.Text += '\n';
             }
- /*           rtb.Text += '\n';
+            rtb.Text += '\n';
             rtb.Text += "Складываем все значения с обозначением **, получаем ответ: ";
             rtb.Text += Result;
             rtb.Text += '\n';
-*/
+
             return Result;
         }
 
@@ -291,23 +292,11 @@ namespace KR1PER
                 else                b2[i-n2] = B_K[i];
             }
 
-            rtb.Text += "-------*******-------";
-            rtb.Text += '\n';
-            rtb.Text += "n="+n;
-            rtb.Text += '\n';
-            rtb.Text += "n/2= " + n2;
+            rtb.Text += V;
             rtb.Text += '\n';
             rtb.Text += "a= " + Conv_To_Number(A_K);
             rtb.Text += '\n';
             rtb.Text += "b= " + Conv_To_Number(B_K);
-            rtb.Text += '\n';
-            rtb.Text += "a1= " + string.Join("", a1);
-            rtb.Text += '\n';
-            rtb.Text += "a2= " + string.Join("", a2);
-            rtb.Text += '\n';
-            rtb.Text += "b1= " + string.Join("", b1);
-            rtb.Text += '\n';
-            rtb.Text += "b2= " + string.Join("", b2);
             rtb.Text += '\n';
             rtb.Text += Conv_To_Number(a1) + "*" + Conv_To_Number(b1) + "*" + 10 + "^" + n + "+ ((" + Conv_To_Number(a1) + " + " + Conv_To_Number(a2) + ")" + "*(" + Conv_To_Number(b1) + " + " + Conv_To_Number(b2) + ")" + " - " + Conv_To_Number(a1) + "*" + Conv_To_Number(b1) + " - " + Conv_To_Number(a2) + "*" + Conv_To_Number(b2) + ")" + "*" + 10 + "^" + n / 2 + " + " + Conv_To_Number(a2) + "*" + Conv_To_Number(b2);
             RX = (Conv_To_Number(a1) * Conv_To_Number(b1) * (int)Math.Pow(10, n)) + ((Conv_To_Number(a1) + Conv_To_Number(a2)) * (Conv_To_Number(b1) + Conv_To_Number(b2)) - Conv_To_Number(a1) * Conv_To_Number(b1) - Conv_To_Number(a2) * Conv_To_Number(b2)) * (int)Math.Pow(10, n2) + Conv_To_Number(a2) * Conv_To_Number(b2);
@@ -331,7 +320,7 @@ namespace KR1PER
 
         public int MKB_ ()//Метод Карацубы, управляющий метод
         {
-            rtb.Text += '\n';
+            rtb.Text += "\n\n";
             rtb.Text += "Метод Карацубы";
             rtb.Text += '\n';
 
