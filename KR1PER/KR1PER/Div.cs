@@ -23,17 +23,15 @@ namespace KR1PER
             string str = "";
             str += "\t\n\n Паскаль: \n";
             str += $"\nn = {n}, d = {d}\n";
-            str += "n = 10^s*n_s + 10^s-1*n_s-1 + ... + 10*n_1 + n_0\n";
-            str += "10 = a_1*d +r_1\n10^2 = a_2*d +r_2\n10^s = a_s*d +r_s\n";
-            str += "n/d <=> (r_s*n_s + r_s-1*n_s-1 + ... + r_1*n_1 + r_0)/d\n\n";
+            str += "(r_s*n_s + r_s-1*n_s-1 + ... + r_1*n_1 + r_0)\n\n";
             int am = Mult.CountOfNumber(n);
+            int j = 0;
             int[] r = new int[n];
             for (int i = 0; i < am; i++)
             {
                 r[i] = (int)Pow(10, i) % d;
                 str += $"r_{i} = {r[i]}\n";
             }
-            str += $"{n} / {d} <=> ";
             List<int> divs = new List<int>();
             int curr_div = n;
 
@@ -41,7 +39,7 @@ namespace KR1PER
             while (curr_div != 0)
             {
                 int s = Mult.CountOfNumber(curr_div);
-                str += "( ";
+                str += $" {++j}) ( ";
                 int new_div = 0;
 
                 for (int i = s - 1; i > 0; i--)
@@ -50,22 +48,22 @@ namespace KR1PER
                     str += $"{r[i]} * {((curr_div / (int)Pow(10, i)) % 10)} + ";
                 }
                 new_div += r[0] * ((curr_div / (int)Pow(10, 0)) % 10);
-                str += $"{r[0]} * {(curr_div / (int)Pow(10, 0)) % 10} ) / {d} <=> {new_div} / {d}";
+                str += $"{r[0]} * {(curr_div / (int)Pow(10, 0)) % 10} ) = {new_div} \n";
 
                 divs.Add(curr_div);
                 curr_div = new_div;
                 if (divs.Contains(curr_div)) break;
-                else str += " <=>";
+                else str += "";
             }
             rtb.Text += str;
+            rtb.Text += $"Ответ: {n}/{d} <=> {curr_div}/{d}\n";
         }
         public void SimplePascal()
         {
             string str = "";
             str += "\t\n\n Упрощённый Паскаль: \n";
             str += $"\nn = {n}, d = {d}\n";
-            str += "n = 10^t*a + b0\n";
-            str += "n/d <=> (r_t*a + b)/d\n\n";
+            str += "(r_t*a + b)\n\n";
             str += "r рассчитываются в предыдущем методе\n";
             int am = Mult.CountOfNumber(n);
             int[] r = new int[n];
@@ -74,16 +72,15 @@ namespace KR1PER
                 r[i] = (int)Pow(10, i) % d;
                 str += $"r_{i} = {r[i]}\n";
             }
-            str += $"{n} / {d} <=> ";
             List<int> divs = new List<int>();
             List<int> rs = new List<int>();
             int curr_div = n;
-
+            int j = 0;
 
             while (curr_div != 0)
             {
                 int s = Mult.CountOfNumber(curr_div);
-                str += "( ";
+                str += $" {++j}) ( ";
                 int new_div = 0;
 
                 int i;
@@ -97,31 +94,30 @@ namespace KR1PER
                 }
                 i = s - 1;
                 new_div += r[i] * (curr_div / (int)Pow(10, i)) + curr_div % (int)Pow(10, i);
-                str += $"{r[i]} * {curr_div / (int)Pow(10, i)} + {curr_div % (int)Pow(10, i)} ) / {d} <=> {new_div} / {d}";
+                str += $"{r[i]} * {curr_div / (int)Pow(10, i)} + {curr_div % (int)Pow(10, i)} ) = {new_div}\n";
                 divs.Add(curr_div);
 
                 curr_div = new_div;
                 if (divs.Contains(curr_div) && rs.Contains(r[i])) break;
                 else
                 {
-                    str += " <=>";
                     rs.Add(r[i]);
                 }
             }
             rtb.Text += str;
+            rtb.Text += $"Ответ: {n}/{d} <=> {curr_div}/{d}\n";
         }
         public void Rachinskiy1()
         {
             string str = "";
             str += "\t\n\n Метод Рачинского 1: \n";
             str += $"\nn = {n}, p = {d}\n";
-            str += "n = 10*m + k (0<=k<=9)\n";
-            str += "p = 10*a + b (0<=b<=9)\n";
-            str += "n/p <=> |b*m - a*k|/p\n\n";
-            int a = 0, b, m, k, n1 = 0;
+            str += "|b*m - a*k|\n\n";
             int n_d = n;
-            str += $"{n_d}/{d} <=> ";
-            while (n_d > d && n1 != n_d)
+            int a = 0, b, m, k, n1 = 999999;
+            str += $"{n_d}/{d} = \n";
+            int i = 0;
+            while (n_d > d && n1 > n_d)
             {
                 k = n_d % 10;
                 m = (n_d - k) / 10;
@@ -129,8 +125,7 @@ namespace KR1PER
                 a = (d - b) / 10;
                 n1 = n_d;
                 n_d = Math.Abs(m * b - a * k);
-                str += $"({b}*{m} - {a}*{k})/{d} <=> {n_d}/{d}\n";
-                str += " <=> ";
+                str += $" {++i}) ({b}*{m} - {a}*{k}) = {n_d}\n";
                 if (n_d < d && n_d != 0)
                 {
                     str += $"Ответ: {n_d} Не делится на {d}";
@@ -148,12 +143,10 @@ namespace KR1PER
             string str = "";
             str += "\t\n\n Метод Рачинского 2: \n";
             str += $"\nn = {n}, p = {d}\n";
-            str += "n = 10*m + k (0<=k<=9)\n";
-            str += "p = 10*a + b (0<=b<=9)\n";
-            str += "q = (p*(b*)+1)/10 ,где (b*) = (b, если b = 3;7) || (10 - b, если b = 1;9)\n";
-            str += "n/p <=> (m + k*q)/p\n\n";
-            int q = 0, b, m, k, n1 = 0;
+            str += "m+kq\n";
+            int q = 0, b, m, k, n1 = 999999;
             int n_d = n;
+            int i = 0;
 
             b = d % 10;
             if (b == 1 || b == 9)
@@ -161,12 +154,12 @@ namespace KR1PER
                 b = 10 - b;
             }
             q = (d * b + 1) / 10;
-            str += $"q = ({d}*{b} + 1) / 10 = {q}\n";
+            str += $"q = ({d}*{b} + 1) / 10 = {q}\n\n";
 
 
-            str += $"{n_d}/{d} <=> ";
+            str += $"{n_d} = \n";
 
-            while (n_d > d && n1 != n_d)
+            while (n_d > d && n1 > n_d)
             {
                 k = n_d % 10;
                 m = (n_d - k) / 10;
@@ -182,8 +175,7 @@ namespace KR1PER
                 
                 n1 = n_d;
                 n_d = Math.Abs(m + k * q);
-                str += $"{m} + {k}*{q} <=> {n_d}/{d}\n";
-                str += " <=> ";
+                str += $" {++i}) {m} + {k}*{q} = {n_d}\n";
                 if ((n1 < n_d) && (n_d > d))
                 {
                     str += "далее следует бесконечный цикл, а раз так, видимо оно не делится";
@@ -207,13 +199,10 @@ namespace KR1PER
             string str = "";
             str += "\t\n\n Метод Рачинского 3: \n";
             str += $"\nn = {n}, p = {d}\n";
-            str += "n = 10*m + k (0<=k<=9)\n";
-            str += "p = 10*a + b (0<=b<=9)\n";
-            str += "q = (p*(b*)+1)/10 ,где (b*) = (b, если b = 3;7) || (10 - b, если b = 1;9)\n";
-            str += "(q*) = |p-q|\n";
-            str += "n/p <=> |-m + k*(q*)|/p\n\n";
-            int q = 0, b, m, k, n1 = 0, q1;
+            str += "m-kq*\n";
+            int q = 0, b, m, k, n1 = 999999, q1;
             int n_d = n;
+            int i = 0;
 
             b = d % 10;
             if (b == 1 || b == 9)
@@ -225,7 +214,7 @@ namespace KR1PER
             str += $"q = ({d}*{b} + 1) / 10 = {q}\n";
             str += $"q* = |{d} - {q}| = {q1}\n";
 
-            while (n_d > d && n1 != n_d)
+            while (n_d > d && n1 > n_d)
             {
                 k = n_d % 10;
                 m = (n_d - k) / 10;
@@ -241,8 +230,7 @@ namespace KR1PER
                 n1 = n_d;
                 n_d = Math.Abs(m - k * q1);
 
-                str += $"|{m} - {k}*{q1}|/{d} = {n_d}/{d}\n";
-                str += " <=> ";
+                str += $" {++i}) |{m} - {k}*{q1}| = {n_d}\n";
 
                 if (n_d < d && n_d != 0)
                 {
