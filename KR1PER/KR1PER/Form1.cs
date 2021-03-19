@@ -467,11 +467,11 @@ namespace KR1PER
         private void button8_Click(object sender, EventArgs e)
         {
             Div div = new Div(richTextBox5, Convert.ToInt32(textBox6.Text), Convert.ToInt32(textBox5.Text));
-            div.Pascal();
-            div.SimplePascal();
             div.Rachinskiy1();
             div.Rachinskiy2();
             div.Rachinskiy3();
+            div.Pascal();
+            div.SimplePascal();
 
         }
 
