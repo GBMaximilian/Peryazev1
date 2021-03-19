@@ -310,10 +310,158 @@ namespace KR1PER
             {
                 richTextBox4.Text += "Dodgson failed\n\n";
             }
+            richTextBox4.Text += "Chio started ---------------------------\n";
+
+            //------Chio-------
+            int dimension = 4;
+            int[,] MDR_2 = new int[Z2.MD_.GetLength(0), Z2.MD_.GetLength(1)];
+            for (int i = 0; i < dataGridView3.Columns.Count; i++)
+            {
+                for (int j = 0; j < dataGridView3.Columns.Count; j++)
+                {
+                    MDR_2[i, j] = Z2.MD_[i, j];
+                    //richTextBox4.Text += $"\nMDR_2 [{i},{j}]: {MDR_2[i, j]}\n";
+                }
+            }
+
+            
+            //DeterminantChio()
+            int[,] MDR_3 = new int[Z2.MD_.GetLength(0) - 1, Z2.MD_.GetLength(1) - 1];
+            int divider = 1;
+            divider *= DeterminantChioMethod(dimension, MDR_2, MDR_3);
+            int[,] MDR_4 = new int[MDR_3.GetLength(0), MDR_3.GetLength(1)];
+            int[,] MDR_5 = new int[MDR_3.GetLength(0), MDR_3.GetLength(1)];
+            int[,] MDR_6 = new int[MDR_3.GetLength(0) - 1, MDR_3.GetLength(1) - 1];
+            int[,] MDR_7 = new int[MDR_3.GetLength(0) - 1, MDR_3.GetLength(1) - 1];
+            divider *= DeterminantChioMethod(dimension - 1, MDR_3, MDR_4);
+
+            richTextBox4.Text += $"\n Determinant Chio: {DeterminantChio(0, 0, 1, 1, MDR_4)/divider} \n-------\n\n";
+
+            // Common Chio
+            
+            int ded = 1;
+            int i_left_up = 0;
+            int j_left_up = 0;
+            int i_right_down = 0;
+            int j_right_down = 0;
+
+            for (i_left_up = 0; i_left_up < dimension - 1; ++i_left_up)
+            {
+                for (j_left_up = 0; j_left_up < dimension - 1; ++j_left_up)
+                {
+                    for (i_right_down = i_left_up + 1; i_right_down < dimension; ++i_right_down)
+                    {
+                        for (j_right_down = j_left_up + 1; j_right_down < dimension; ++j_right_down)
+                        {
+                            ded = DeterminantChio(i_left_up, j_left_up, i_right_down, j_right_down, MDR_2);
+                            if (ded != 0)
+                            {
+                                break;
+                            }
+                        }
+                        if (ded != 0)
+                        {
+                            break;
+                        }
+                    }
+                    if (ded != 0)
+                    {
+                        break;
+                    }
+                }
+                if (ded != 0)
+                {
+                    break;
+                }
+            }
             
 
+            int i_left_up_2 = -1;
+            int j_left_up_2 = -1;
+            int i_right_down_2 = -1;
+            int j_right_down_2 = -1;
 
+            for (int i = 0; i < dimension; ++i)
+            {
+                if(i == i_left_up || i == i_right_down || i == i_left_up_2)
+                {
+                    continue;
+                }
+                for(int j = 0; j < dimension; ++j)
+                {
+                    if (j == j_left_up || j == j_right_down || j == j_left_up_2)
+                    {
+                        continue;
+                    } else
+                    {
+                        if (i_left_up_2 == -1)
+                        {
+                            i_left_up_2 = i;
+                            j_left_up_2 = j;
+                        } else
+                        {
+                            i_right_down_2 = i;
+                            j_right_down_2 = j;
+                        }
+                    }
+                }
+            }
 
+            int[,] i_major = new int[2, 2];
+            int[,] j_major = new int[2, 2];
+
+            i_major[0, 0] = i_left_up_2;
+            i_major[0, 1] = i_left_up_2;
+            i_major[1, 0] = i_right_down_2;
+            i_major[1, 1] = i_right_down_2;
+
+            j_major[0, 0] = j_left_up_2;
+            j_major[1, 0] = j_left_up_2;
+            j_major[0, 1] = j_right_down_2;
+            j_major[1, 1] = j_right_down_2;
+
+            richTextBox4.Text += $"Minor's determinant: {ded}\n";
+            richTextBox4.Text += $"Minor's indexes:\n";
+            richTextBox4.Text += $" i_left_up = {i_left_up}; j_left_up = {j_left_up}\n";
+            richTextBox4.Text += $" i_right_down = {i_right_down}; i_right_down = {j_right_down}\n";
+
+            //richTextBox4.Text += $" i_left_up_2 = {i_left_up_2}; j_left_up_2 = {j_left_up_2}\n";
+            //richTextBox4.Text += $" i_right_down_2 = {i_right_down_2}; i_right_down_2 = {j_right_down_2}\n";
+
+            int[] i_array = new int[dimension - 1];
+            int[] j_array = new int[dimension - 1];
+
+            for(int k = 0; k < dimension - 2; ++k)
+            {
+                for (int l = 0; l < dimension - 2; ++l)
+                {
+                    i_array[0] = i_left_up;
+                    i_array[1] = i_right_down;
+
+                    j_array[0] = j_left_up;
+                    j_array[1] = j_right_down;
+
+                    i_array[2] = i_major[k, l];
+                    j_array[2] = j_major[k, l];
+
+                    Array.Sort(i_array);
+                    Array.Sort(j_array);
+
+                    for (int m = 0; m < dimension - 1; ++m)
+                    {
+                        for(int n = 0; n < dimension - 1; ++n)
+                        {
+                            MDR_5[m, n] = MDR_2[i_array[m], j_array[n]];
+                        }
+                    }
+                    richTextBox4.Text += $"array[{k}, {l}]:\n{OutNumDoubleArrayInCapacity(MDR_5)} \n";
+                    divider = DeterminantChioMethod(dimension - 1, MDR_5, MDR_6);
+                    MDR_7[k, l] = DeterminantChio(0, 0, 1, 1, MDR_6) / divider;
+
+                }
+            }
+            richTextBox4.Text += $"{OutNumDoubleArrayInCapacity(MDR_7)}\n";
+            richTextBox4.Text += $"\n Determinant Common (Super Puper) Chio: {DeterminantChio(0, 0, 1, 1, MDR_7) / ded} \n";
         }
 
         private void button8_Click(object sender, EventArgs e)
