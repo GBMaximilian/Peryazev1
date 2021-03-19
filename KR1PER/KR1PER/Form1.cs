@@ -153,6 +153,77 @@ namespace KR1PER
             catch { }
         }
 
+        //calculates determinant for 2x2
+        private int DeterminantChio(int i_min, int j_min, int i_max, int j_max, int[,] array)
+        {
+            int result = array[i_max, j_max] * array[i_min, j_min] - array[i_min, j_max] * array[i_max, j_min];
+            //richTextBox4.Text += $"result {result}\n";
+            return array[i_max, j_max] * array[i_min, j_min] - array[i_min, j_max] * array[i_max, j_min];
+        }
+
+        private int DeterminantChioMethod (int dimension, int [,] MDR_2, int [,] MDR_3){
+            int i_min = 9999999, j_min = 9999999, min = 9999999;
+            for (int i = 0; i < MDR_2.GetLength(0); i++)
+            {
+                for (int j = 0; j < MDR_2.GetLength(1); j++)
+                {
+                    if (Math.Abs(MDR_2[i, j]) <= Math.Abs(min) && MDR_2[i, j] != 0)
+                    {
+                        min = MDR_2[i, j];
+                        i_min = i;
+                        j_min = j;
+                        if (min == 1)
+                        {
+                            break;
+                        }
+                    }
+                }
+                if (min == 1)
+                {
+                    break;
+                }
+            }
+
+            richTextBox4.Text += $"\nMDR_2 min [{i_min}, {j_min}]: {MDR_2[i_min, j_min]}\n";
+
+            for (int k = 0; k < dimension - 1; k++)
+            {
+                for (int l = 0; l < dimension - 1; l++)
+                { 
+                    //if ((1 <= k) & (k <= i_min - 1) & (1 <= l) & (l <= j_min - 1))
+                    if ((0 <= k) & (k <= i_min - 1) & (0 <= l) & (l <= j_min - 1))
+                    {
+                        MDR_3[k, l] = DeterminantChio(k, l, i_min, j_min, MDR_2);
+                    }
+                    //if ((1 <= k) & (k <= i_min - 1) & (j_min + 1 <= l) & (l <= dimension))
+
+                    if ((0 <= k) & (k <= i_min - 1) & (j_min <= l) & (l <= dimension))
+                    {
+                        MDR_3[k, l] = DeterminantChio(k, j_min, i_min, l + 1, MDR_2);
+                    }
+                    if ((i_min <= k) & (k <= dimension) & (0 <= l) & (l <= j_min - 1))
+                    //if ((i_min + 1 <= k) & (k <= dimension) & (1 <= l) & (l <= j_min - 1))
+                    
+                    {
+                         MDR_3[k, l] = DeterminantChio(i_min, l, k + 1, j_min, MDR_2);
+                        //MDR_3[k, l] = (int)(DeterminantChio(i_min, l, k, j_min, MDR_2) / Math.Pow(MDR_2[i_min, j_min], dimension - 2));
+                    }
+                    if ((i_min <= k) & (k <= dimension) & (j_min <= l) & (l <= dimension))
+                    //if ((i_min + 1 <= k) & (k <= dimension) & (j_min + 1 <= l) & (l <= dimension))
+
+                    {
+                        MDR_3[k, l] = DeterminantChio(i_min, j_min, k + 1, l + 1, MDR_2);
+
+                        //MDR_3[k, l] = (int)(DeterminantChio(i_min, j_min, k, l, MDR_2) / Math.Pow(MDR_2[i_min, j_min], dimension - 2));
+
+                    }
+                    richTextBox4.Text += $"\nMDR_3 [{k},{l}]: {MDR_3[k, l]}\n";
+                }
+            }
+            return (int)Math.Pow(MDR_2[i_min, j_min], dimension - 2);
+        }
+
+
         private void button6_Click(object sender, EventArgs e)
         {
 
